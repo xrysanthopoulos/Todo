@@ -19,11 +19,18 @@ class TodoApp extends React.Component {
   }
 
   render() {
+    fetch('http://localhost:4000')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
     return (
       <div>
         <h3>TODO</h3>
         {/* {console.log(this.state)} */}
-        <TodoList items={this.state.items} re_renderBack={this.re_renderBack}/>
+        <TodoList items={this.state.items} re_renderBack={this.re_renderBack} />
         <form onClick={this.handleSubmit}>
           <label htmlFor="new-todo">
             What needs to be done?
